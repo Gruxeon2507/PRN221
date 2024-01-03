@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "server =(local); database = demo;uid=duckm;pwd=123456;Trusted_Connection=True;Encrypt=False"
+  }
+}
