@@ -45,7 +45,7 @@
                   ItemsSource="{Binding Major, Mode =OneWay}"
                   DisplayMemberPath="Name"
                   SelectedValuePath="Id"
-                  SelectedValue="{Binding Id}" DataContext="{Binding SelectedItem, ElementName=ListView}"
+                  SelectedValue="{Binding Id, Mode =OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"
                   />
         
         <Button Grid.Row="3" Width="100" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="Load" Content="Load Data" Margin="5 5 0 0" Click="Load_Data"/>
