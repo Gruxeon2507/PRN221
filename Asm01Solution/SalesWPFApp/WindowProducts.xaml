@@ -8,7 +8,62 @@
         Title="ProductManagement" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="1" Grid.Column="0" Margin="4 4 0 0" Content="Product Id: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="1" Grid.Column="1"  Margin="4 4 0 0" Name="txtId" Width="200"  Text="{Binding ProductId, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+        <Button x:Name="SearchId"  Grid.Row="1" Grid.Column="2" Margin="4 4 4 4" Width="70" Content="Search" Click="SearchById"></Button>
+        <Label Grid.Row="1" Grid.Column="3" Margin="4 4 0 0" Content="Product Name: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="1" Grid.Column="4"  Margin="4 4 0 0" Name="txtName" Width="200"  Text="{Binding ProductName, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Margin="4 4 0 0" Content="Product Category: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="2" Grid.Column="1"  Margin="4 4 0 0" Name="txtCategory" Width="200"  Text="{Binding CategoryId, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+        <Label Grid.Row="2" Grid.Column="3" Margin="4 4 0 0" Content="Weight: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="2" Grid.Column="4"  Margin="4 4 0 0" Name="txtWeight" Width="200"  Text="{Binding Weight, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Margin="4 4 0 0" Content="Unit Price: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="3" Grid.Column="1"  Margin="4 4 0 0" Name="txtPrice" Width="200"  Text="{Binding UnitPrice, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+        <Button x:Name="SearchPrice"  Grid.Row="3" Grid.Column="2" Margin="4 4 4 4" Width="70" Content="Search" Click="SearchByPrice"></Button>
+        <Label Grid.Row="3" Grid.Column="3" Margin="4 4 0 0" Content="Units In Stock: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="3" Grid.Column="4"  Margin="4 4 0 0" Name="txtUnit" Width="200"  Text="{Binding UnitsInStock, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+        <Button x:Name="SearchUnit"  Grid.Row="3" Grid.Column="5" Margin="4 4 4 4" Width="70" Content="Search" Click="SearchByUnit"></Button>
+
+        
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Load" Click="LoadProduct"/>
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Insert" Click="InsertProduct"/>
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Update" Click="UpdateProduct"/>
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Delete" Click="DeleteProduct"/>
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Clear" Click="ClearProduct"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="6" Grid.ColumnSpan="6" Width="780" AutoGenerateColumns="False" CanUserResizeColumns="True" Name="ListView" SelectionChanged="ListView_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="70" Header="ProductId" Binding="{Binding Path=ProductId}"/>
+                <DataGridTextColumn Width="170" Header="ProductName" Binding="{Binding Path=ProductName}"/>
+                <DataGridTextColumn Width="100" Header="CategoryId" Binding="{Binding Path=CategoryId}"/>
+                <DataGridTextColumn Width="100" Header="Weight" Binding="{Binding Path=Weight}"/>
+                <DataGridTextColumn Width="150" Header="UnitPrice" Binding="{Binding Path=UnitPrice}"/>
+                <DataGridTextColumn Width="*" Header="UnitInStock" Binding="{Binding Path=UnitInStock}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
