@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -11,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using WPFFormGenModel.Models;
 namespace WPFFormGenModel
 {
@@ -90,7 +92,7 @@ namespace WPFFormGenModel
                     Phone = txtPhone.Text,
                     Major = major.Id,
                 };
-                if (txtId.Text != null)
+                if (txtId.Text != "")
                 {
                     student.Id = int.Parse(txtId.Text);
                 }
@@ -194,6 +196,14 @@ namespace WPFFormGenModel
         private void Student_Up(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void Create_Xml(object sender, RoutedEventArgs e)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Student));
+            using Stream s2 = File.OpenRead("XMLStudent.xml");
+            var p2 = (Student)xs.Deserialize(s2);
+            var p3 = p2;
         }
     }
 }

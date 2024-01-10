@@ -36,22 +36,23 @@
         <RadioButton Grid.Row="1" Grid.Column="3"  Margin="4 4 0 0" Name="rdoMale"  Content="Male"
                       IsChecked="{Binding Gender, Mode =OneWay}" DataContext="{Binding SelectedItem , ElementName= ListView}"/>
         <RadioButton Grid.Row="1" Grid.Column="3"  Margin="80 4 0 0" Name="rdoFemale" Content="Female"
-                     IsChecked="{Binding !Gender, Mode =OneWay}" DataContext="{Binding SelectedItem , ElementName= ListView}"/>
+                     IsChecked="{Binding Gender, Mode =OneWay}" DataContext="{Binding SelectedItem , ElementName= ListView}"/>
 
         <Label Grid.Row="2" Grid.Column="0" Margin="4 4 0 0" Content="Phone: "/>
         <TextBox Grid.Row="2" Grid.Column="1"  Margin="4 4 0 0" Name="txtPhone" Width="150" Text="{Binding Phone, Mode =OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
         <Label Grid.Row="2" Grid.Column="2" Margin="4 4 0 0" Content="Major: "/>
         <ComboBox Grid.Row="2" Grid.Column="3"  Margin="10,4,50,360" Name="cboMajor" Grid.RowSpan="3" 
-                  ItemsSource="{Binding Major, Mode =OneWay}"
+                  ItemsSource="{Binding Major, Mode =OneWay}" 
                   DisplayMemberPath="Name"
                   SelectedValuePath="Id"
-                  SelectedValue="{Binding Id, Mode =OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"
+                  SelectedValue="{Binding Major, Mode =OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"
                   />
         
         <Button Grid.Row="3" Width="100" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="Load" Content="Load Data" Margin="5 5 0 0" Click="Load_Data"/>
         <Button Grid.Row="3" Width="100" HorizontalAlignment="Left" x:Name="Add" Content="Create" Margin="59,5,0,0" Click="Add_Data" Grid.Column="1" Height="20" Grid.RowSpan="2" VerticalAlignment="Top"/>
         <Button Grid.Row="3" Width="100" Grid.ColumnSpan="2" HorizontalAlignment="Left" x:Name="Update" Content="Update" Margin="15,5,0,0" Click="Update_Data" Grid.Column="2" Height="20" Grid.RowSpan="2" VerticalAlignment="Top"/>
         <Button Grid.Row="3"  Width="100" HorizontalAlignment="Left" x:Name="Delete" Content="Delete" Margin="71,5,0,0" Click="Delete_Data" Grid.Column="3" Height="20" Grid.RowSpan="2" VerticalAlignment="Top"/>
+        <Button Grid.Row="3"  Width="100" HorizontalAlignment="Left" x:Name="Xml" Content="XML" Margin="200,5,0,0" Click="Create_Xml" Grid.Column="4" Height="20" Grid.RowSpan="2" VerticalAlignment="Top"/>
 
         <DataGrid Grid.Row="4" Grid.ColumnSpan="4" Margin="4,4,0,4" AutoGenerateColumns="False" CanUserResizeColumns="True" Name="ListView" MouseLeftButtonUp="Student_Up" SelectionChanged="ListView_SelectionChanged" HorizontalAlignment="Left" Width="662">
             <DataGrid.Columns>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+	<Student xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">>
+		<Id>0</Id>
+		<Name> duckm </Name>
+		<Company>Techvify</Company>
+		<Phone>123456</Phone>
+		<Dov>1985-1-5</Dov>
+		<Gender>1</Gender>
+		<Major>1</Major>
+	</Student>
