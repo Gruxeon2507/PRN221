@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    internal class MemberRepository : IMemberRepository
+    public class MemberRepository : IMemberRepository
     {
         public void AddMember(Member member) => MemberDAO.Instance.AddMember(member);
 

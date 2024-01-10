@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    internal interface IMemberRepository
+    public interface IMemberRepository
     {
         IEnumerable<Member> GetAllMembers();
         void AddMember (Member member);

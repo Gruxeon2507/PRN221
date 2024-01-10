@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    internal interface IProductRepository
+    public interface IProductRepository
     {
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetProductsByPrice(decimal price);

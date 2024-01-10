@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    internal class OrderRepository : IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
         public void AddOrder(Order order) => OrderDAO.Instance.AddOrder(order);
         public void DeleteOrder(Order order) => OrderDAO.Instance.DeleteOrder(order);

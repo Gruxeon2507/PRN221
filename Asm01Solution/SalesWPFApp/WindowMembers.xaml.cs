@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SalesWPFApp
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for WindowMembers.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class WindowMembers : Window
     {
-        public Login()
+        public WindowMembers()
         {
             InitializeComponent();
         }

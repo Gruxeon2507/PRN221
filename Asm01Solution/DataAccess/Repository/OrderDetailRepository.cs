@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    internal class OrderDetailRepository
+    public class OrderDetailRepository
     {
     }
 }

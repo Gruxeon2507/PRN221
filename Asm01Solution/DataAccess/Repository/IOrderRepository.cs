@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    internal interface IOrderRepository
+    public interface IOrderRepository
     {
         IEnumerable<Order> GetAllOrders();
         IEnumerable<Order> GetOrdersByDate(DateTime startDate, DateTime endDate);
