@@ -1,0 +1,42 @@
+﻿<Window x:Class="SalesWPFApp.WindowUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        mc:Ignorable="d"
+        Title="WindowUser" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="My Order" FontWeight="Bold" FontSize="20"></Label>
+        <DataGrid Grid.Row="6" Grid.ColumnSpan="6" Width="780" AutoGenerateColumns="False" CanUserResizeColumns="True" Name="ListView" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="70" Header="OrderId" Binding="{Binding Path=OrderId}"/>
+                <DataGridTextColumn Width="170" Header="MemberId" Binding="{Binding Path=MemberId}"/>
+                <DataGridTextColumn Width="100" Header="OrderDate" Binding="{Binding Path=OrderDate}"/>
+                <DataGridTextColumn Width="100" Header="Freight" Binding="{Binding Path=Freight}"/>
+                <DataGridTextColumn Width="150" Header="RequiredDate" Binding="{Binding Path=RequiredDate}"/>
+                <DataGridTextColumn Width="*" Header="ShippedDate" Binding="{Binding Path=ShippedDate}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+
+</Window>

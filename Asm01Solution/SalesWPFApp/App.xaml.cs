@@ -26,6 +26,7 @@ namespace SalesWPFApp
             services.AddSingleton<WindowMembers>();
             services.AddSingleton<WindowOrders>();
             services.AddSingleton<WindowProducts>();
+            services.AddSingleton<WindowUser>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();

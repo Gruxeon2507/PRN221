@@ -9,7 +9,7 @@ namespace DataAccess.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        public void AddProduct(Product product) => ProductDAO.Instance.GetAllProducts();
+        public void AddProduct(Product product) => ProductDAO.Instance.AddProduct(product);
 
         public void DeleteProduct(Product product) => ProductDAO.Instance.DeleteProduct(product);
 

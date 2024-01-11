@@ -91,6 +91,10 @@ namespace DataAccess
                         ctx.SaveChanges();
                     }
                 }
+                else
+                {
+                    throw new Exception("Member is already exist");
+                }
             }
             catch (Exception ex)
             {

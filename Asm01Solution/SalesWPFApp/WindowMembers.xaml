@@ -7,6 +7,66 @@
         mc:Ignorable="d"
         Title="WindowMembers" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Member Management" FontWeight="Bold" FontSize="20"></Label>
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Product" Click="ProductNav"/>
+            <Button Width="80px" Height="20" Margin="20 10 20 10" Content="Order" Click="OrderNav"/>
+            <Button Width="80px" Height="20" Margin="20 10 20 10" Content="Logout" Click="LoginNav"/>
+
+        </StackPanel>
+
+        <Label Grid.Row="1" Grid.Column="0" Margin="4 4 0 0" Content="Member Id: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="1" Grid.Column="1"  Margin="4 4 0 0" Name="txtId" Width="200"  Text="{Binding MemberId, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+        <Label Grid.Row="1" Grid.Column="3" Margin="4 4 0 0" Content="Email: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="1" Grid.Column="4"  Margin="4 4 0 0" Name="txtEmail" Width="200"  Text="{Binding Email, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Margin="4 4 0 0" Content="Company Name: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="2" Grid.Column="1"  Margin="4 4 0 0" Name="txtCompany" Width="200"  Text="{Binding CompanyName, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+        <Label Grid.Row="2" Grid.Column="3" Margin="4 4 0 0" Content="City: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="2" Grid.Column="4"  Margin="4 4 0 0" Name="txtCity" Width="200"  Text="{Binding City, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Margin="4 4 0 0" Content="Country: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="3" Grid.Column="1"  Margin="4 4 0 0" Name="txtCountry" Width="200"  Text="{Binding Country, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+        <Label Grid.Row="3" Grid.Column="3" Margin="4 4 0 0" Content="Password: " FontWeight="Bold"/>
+        <TextBox FontWeight="Bold" Grid.Row="3" Grid.Column="4"  Margin="4 4 0 0" Name="txtPassword" Width="200"  Text="{Binding Password, Mode=OneWay}" DataContext="{Binding SelectedItem, ElementName=ListView}"/>
+
+
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <Button Width="80px" Height="20" Margin="120 10 20 10" Content="Load" Click="LoadMember"/>
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Insert" Click="InsertMember"/>
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Update" Click="UpdateMember"/>
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Delete" Click="DeleteMember"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="6" Grid.ColumnSpan="6" Width="780" AutoGenerateColumns="False" CanUserResizeColumns="True" Name="ListView">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="70" Header="MemberId" Binding="{Binding Path=MemberId}"/>
+                <DataGridTextColumn Width="170" Header="Email" Binding="{Binding Path=Email}"/>
+                <DataGridTextColumn Width="100" Header="CompanyName" Binding="{Binding Path=CompanyName}"/>
+                <DataGridTextColumn Width="100" Header="City" Binding="{Binding Path=City}"/>
+                <DataGridTextColumn Width="150" Header="Country" Binding="{Binding Path=Country}"/>
+                <DataGridTextColumn Width="*" Header="Password" Binding="{Binding Path=Password}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

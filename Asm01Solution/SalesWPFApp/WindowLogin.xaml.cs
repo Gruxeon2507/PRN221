@@ -44,9 +44,9 @@ namespace SalesWPFApp
             if(email!=null && password != null) {
                 if(email.Equals(admin["email"]) && password.Equals(admin["password"]))
                 {
-                    Hide();
                     WindowProducts windowProducts = new WindowProducts(_productRepository, _memberRepository, _orderRepository);
                     windowProducts.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -54,8 +54,10 @@ namespace SalesWPFApp
                     if (member != null)
                     {
                         Hide();
-                        WindowMembers windowMembers = new WindowMembers();
-                        windowMembers.Show();
+                        WindowUser windowUsers = new WindowUser(_productRepository, _memberRepository, _orderRepository, member);
+                        windowUsers.Show();
+                        this.Close();
+
                     }
                     else
                     {

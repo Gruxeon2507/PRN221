@@ -108,6 +108,10 @@ namespace DataAccess
                         ctx.SaveChanges();
                     }
                 }
+                else
+                {
+                    throw new Exception("Product is already exist");
+                }
             }
             catch (Exception ex)
             {
