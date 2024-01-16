@@ -35,6 +35,15 @@
                 <DataGridTextColumn Width="100" Header="Freight" Binding="{Binding Path=Freight}"/>
                 <DataGridTextColumn Width="150" Header="RequiredDate" Binding="{Binding Path=RequiredDate}"/>
                 <DataGridTextColumn Width="*" Header="ShippedDate" Binding="{Binding Path=ShippedDate}"/>
+                <DataGridTemplateColumn Width="100" Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Detail" Click="OrderDetail"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

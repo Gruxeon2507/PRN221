@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,19 +145,21 @@ namespace DataAccess
         {
             try
             {
-                Order m = GetOrderById(order.OrderId);
+                using (var ctx = new Assignment01Context())
+                {
+                    Order m = ctx.Orders.Include(o => o.OrderDetails).FirstOrDefault(o => o.OrderId == order.OrderId);
+
                 if (m != null)
                 {
-                    using (var ctx = new Assignment01Context())
-                    {
                         ctx.Orders.Remove(order);
                         ctx.SaveChanges();
-                    }
                 }
                 else
                 {
                     throw new Exception("Order does not exist");
                 }
+                }
+
             }
             catch (Exception ex)
             {

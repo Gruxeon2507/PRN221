@@ -67,19 +67,17 @@ namespace SalesWPFApp
         private void LoadProduct(object sender, RoutedEventArgs e)
         {
             Load_data();
+            myPopup.IsOpen = true;
+
         }
 
         private void InsertProduct(object sender, RoutedEventArgs e)
         {
             try
             {
-                var product = GetInfor();
-                if (product != null)
-                {
-                    _productRepository.AddProduct(product);
-                    Load_data();
-                    MessageBox.Show("Insert Product completed", "Create Product");
-                }
+                    InsertProduct insertProduct = new InsertProduct(_productRepository, _memberRepository, _orderRepository);
+                    insertProduct.Closed += ReloadData;
+                    insertProduct.Show();
             }
             catch (Exception ex)
             {
@@ -91,12 +89,11 @@ namespace SalesWPFApp
         {
             try
             {
-                var product = GetInfor();
-                if (product != null)
+                if (sender is Button updateButton && updateButton.DataContext is Product productToUpdate)
                 {
-                    _productRepository.UpdateProduct(product);
-                    Load_data();
-                    MessageBox.Show("Update Product completed", "Update Product");
+                    UpdateProduct updateProduct = new UpdateProduct(_productRepository,_memberRepository,_orderRepository,productToUpdate);
+                    updateProduct.Closed += ReloadData;
+                    updateProduct.Show();
                 }
             }
             catch (Exception ex)
@@ -104,22 +101,25 @@ namespace SalesWPFApp
                 MessageBox.Show(ex.Message);
             }
         }
+        private void ReloadData(object sender, EventArgs e)
+        {
+            Load_data();
+        }
 
         private void DeleteProduct(object sender, RoutedEventArgs e)
         {
             try
             {
-                var product = GetInfor();
-                if (product != null)
+                if(sender is Button deleteButton && deleteButton.DataContext is Product productToDelete)
                 {
-                    _productRepository.DeleteProduct(product);
+                    _productRepository.DeleteProduct(productToDelete);
                     Load_data();
                     MessageBox.Show("Delete Product completed", "Delete Product");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Product is existed in a order");
             }
         }
 
@@ -223,6 +223,10 @@ namespace SalesWPFApp
             WindowLogin windowLogin = new WindowLogin(_productRepository,_memberRepository,_orderRepository);
             windowLogin.Show();
             this.Close();
+        }
+        private void ClosePopup_Click(object sender, RoutedEventArgs e)
+        {
+            myPopup.IsOpen = false;
         }
     }
 }

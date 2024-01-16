@@ -24,8 +24,8 @@ namespace SalesWPFApp
         private readonly IMemberRepository _memberRepository;
         private readonly IProductRepository _productRepository;
         private readonly IOrderRepository _orderRepository;
-        private Member _member;
-        public WindowUser(IProductRepository productRepository, IMemberRepository memberRepository, IOrderRepository orderRepository, Member member)
+        private BusinessObject.Models.Member _member;
+        public WindowUser(IProductRepository productRepository, IMemberRepository memberRepository, IOrderRepository orderRepository, BusinessObject.Models.Member member)
         {
             _productRepository = productRepository;
             _memberRepository = memberRepository;
@@ -37,6 +37,15 @@ namespace SalesWPFApp
         private void Load_data()
         {
             ListView.ItemsSource = _orderRepository.GetOrdersByUser(_member.Email);
+        }
+
+        private void OrderDetail(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button detailButton && detailButton.DataContext is Order orderToView)
+            {
+                OrderDetails orderDetail = new OrderDetails(_productRepository, _memberRepository, _orderRepository, orderToView);
+                orderDetail.Show();
+            }
         }
     }
 }

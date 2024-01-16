@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SalesWPFApp"
         mc:Ignorable="d"
-        Title="ProductManagement" Height="450" Width="800">
+        Title="ProductManagement" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -54,13 +54,20 @@
 
         
         <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Stretch">
-            <Button Width="80px" Height="20" Margin="120 10 20 10" Content="Load" Click="LoadProduct"/>
-            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Insert" Click="InsertProduct"/>
-            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Update" Click="UpdateProduct"/>
-            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Delete" Click="DeleteProduct"/>
+            <Button Width="80px" Height="20" Margin="300 10 20 10" Content="Load" Click="LoadProduct"/>
+            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Create" Click="InsertProduct"/>
         </StackPanel>
+        <Popup x:Name="myPopup" Placement="Center" IsOpen="False" StaysOpen="False">
+            <Border BorderBrush="Black" BorderThickness="1" Background="White">
+                <StackPanel>
+                    <!-- Your popup content goes here -->
+                    <TextBlock Text="This is a Popup Window" Margin="10"/>
+                    <Button Content="Close" Click="ClosePopup_Click"/>
+                </StackPanel>
+            </Border>
+        </Popup>
 
-        <DataGrid Grid.Row="6" Grid.ColumnSpan="6" Width="780" AutoGenerateColumns="False" CanUserResizeColumns="True" Name="ListView" SelectionChanged="ListView_SelectionChanged">
+        <DataGrid Grid.Row="6" Grid.ColumnSpan="6" Width="780" AutoGenerateColumns="False" CanUserResizeColumns="True" Name="ListView" SelectionChanged="ListView_SelectionChanged" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="70" Header="ProductId" Binding="{Binding Path=ProductId}"/>
                 <DataGridTextColumn Width="170" Header="ProductName" Binding="{Binding Path=ProductName}"/>
@@ -68,7 +75,16 @@
                 <DataGridTextColumn Width="100" Header="Weight" Binding="{Binding Path=Weight}"/>
                 <DataGridTextColumn Width="150" Header="UnitPrice" Binding="{Binding Path=UnitPrice}"/>
                 <DataGridTextColumn Width="*" Header="UnitsInStock" Binding="{Binding Path=UnitsInStock}"/>
-
+                <DataGridTemplateColumn Width="100" Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Update" Click="UpdateProduct"/>
+                                <Button Content="Delete" Click="DeleteProduct"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

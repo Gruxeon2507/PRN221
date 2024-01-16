@@ -50,7 +50,7 @@ namespace SalesWPFApp
                 }
                 else
                 {
-                    Member member = _memberRepository.GetMemberByEmail(email, password);
+                    BusinessObject.Models.Member member = _memberRepository.GetMemberByEmail(email, password);
                     if (member != null)
                     {
                         Hide();

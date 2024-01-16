@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SalesWPFApp"
         mc:Ignorable="d"
-        Title="WindowMembers" Height="450" Width="800">
+        Title="WindowMembers" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -51,13 +51,11 @@
 
 
         <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Stretch">
-            <Button Width="80px" Height="20" Margin="120 10 20 10" Content="Load" Click="LoadMember"/>
+            <Button Width="80px" Height="20" Margin="300 10 20 10" Content="Load" Click="LoadMember"/>
             <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Insert" Click="InsertMember"/>
-            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Update" Click="UpdateMember"/>
-            <Button Width="80px" Height="20" Margin="50 10 20 10" Content="Delete" Click="DeleteMember"/>
         </StackPanel>
 
-        <DataGrid Grid.Row="6" Grid.ColumnSpan="6" Width="780" AutoGenerateColumns="False" CanUserResizeColumns="True" Name="ListView">
+        <DataGrid Grid.Row="6" Grid.ColumnSpan="6" Width="780" AutoGenerateColumns="False" CanUserResizeColumns="True" Name="ListView" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="70" Header="MemberId" Binding="{Binding Path=MemberId}"/>
                 <DataGridTextColumn Width="170" Header="Email" Binding="{Binding Path=Email}"/>
@@ -65,7 +63,16 @@
                 <DataGridTextColumn Width="100" Header="City" Binding="{Binding Path=City}"/>
                 <DataGridTextColumn Width="150" Header="Country" Binding="{Binding Path=Country}"/>
                 <DataGridTextColumn Width="*" Header="Password" Binding="{Binding Path=Password}"/>
-
+                <DataGridTemplateColumn Width="100" Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Update" Click="UpdateMember"/>
+                                <Button Content="Delete" Click="DeleteMember"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

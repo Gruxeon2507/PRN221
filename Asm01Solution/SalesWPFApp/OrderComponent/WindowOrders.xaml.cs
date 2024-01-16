@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace SalesWPFApp
 {
     /// <summary>
-    /// Interaction logic for WindowMembers.xaml
+    /// Interaction logic for WindowOrders.xaml
     /// </summary>
-    public partial class WindowMembers : Window
+    public partial class WindowOrders : Window
     {
         private readonly IMemberRepository _memberRepository;
         private readonly IProductRepository _productRepository;
         private readonly IOrderRepository _orderRepository;
-        public WindowMembers(IProductRepository productRepository, IMemberRepository memberRepository, IOrderRepository orderRepository)
+        public WindowOrders(IProductRepository productRepository, IMemberRepository memberRepository, IOrderRepository orderRepository)
         {
             _productRepository = productRepository;
             _memberRepository = memberRepository;
@@ -32,14 +32,11 @@ namespace SalesWPFApp
             InitializeComponent();
             Load_data();
         }
-        private void Load_data()
+
+        private void MembertNav(object sender, RoutedEventArgs e)
         {
-            ListView.ItemsSource = _memberRepository.GetAllMembers();
-        }
-        private void ProductNav(object sender, RoutedEventArgs e)
-        {
-            WindowProducts windowProducts = new WindowProducts(_productRepository, _memberRepository, _orderRepository);
-            windowProducts.Show();
+            WindowLogin windowLogin = new WindowLogin(_productRepository, _memberRepository, _orderRepository);
+            windowLogin.Show();
             this.Close();
         }
 
@@ -57,44 +54,49 @@ namespace SalesWPFApp
             this.Close();
         }
 
-        private void LoadMember(object sender, RoutedEventArgs e)
+        private void Load_data()
         {
-            Load_data();
+            ListView.ItemsSource = _orderRepository.GetAllOrders();
         }
 
-        public Member GetInfor()
+        public Order GetInfor()
         {
             try
             {
-                Member member = new Member
+                Order order = new Order
                 {
-                    Email = txtEmail.Text,
-                    CompanyName = txtCompany.Text,
-                    City = txtCity.Text,
-                    Country = txtCountry.Text,
-                    Password = txtPassword.Text
+                    OrderDate = dtOrderDate.SelectedDate,
+                    RequiredDate = dtRequiredDate.SelectedDate,
+                    ShippedDate = dtShippedDate.SelectedDate,
+                    Freight = Decimal.Parse(txtFreight.Text),
+                    OrderId = Int32.Parse(txtOrderId.Text),
+                    MemberId = Int32.Parse(txtMemberId.Text),
                 };
-                if (txtId.Text != "")
-                {
-                    member.MemberId = Int32.Parse(txtId.Text);
-                }
-                return member;
-            }catch (Exception ex)
+               
+                return order;
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             return null;
         }
+
+        private void LoadMember(object sender, RoutedEventArgs e)
+        {
+            Load_data();
+        }
+
         private void InsertMember(object sender, RoutedEventArgs e)
         {
             try
             {
-                var member = GetInfor();
-                if (member != null)
+                var order = GetInfor();
+                if (order != null)
                 {
-                    _memberRepository.AddMember(member);
+                    _orderRepository.AddOrder(order);
                     Load_data();
-                    MessageBox.Show("Insert Member completed", "Create Member");
+                    MessageBox.Show("Insert Order completed", "Create Order");
                 }
             }
             catch (Exception ex)
@@ -107,12 +109,12 @@ namespace SalesWPFApp
         {
             try
             {
-                var member = GetInfor();
-                if (member != null)
+                var order = GetInfor();
+                if (order != null)
                 {
-                    _memberRepository.UpdateMember(member);
+                    _orderRepository.UpdateOrder(order);
                     Load_data();
-                    MessageBox.Show("Update Member completed", "Update Member");
+                    MessageBox.Show("Insert Order completed", "Create Order");
                 }
             }
             catch (Exception ex)
@@ -125,12 +127,32 @@ namespace SalesWPFApp
         {
             try
             {
-                var member = GetInfor();
-                if (member != null)
+                if(sender is Button deleteButton && deleteButton.DataContext is Order orderToDelete)
                 {
-                    _memberRepository.DeleteMember(member);
+                    _orderRepository.DeleteOrder(orderToDelete);
                     Load_data();
-                    MessageBox.Show("Delete Member completed", "Delete Member");
+                    MessageBox.Show("Delete Order completed", "Delete Order");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SearchByDate(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DateTime? startDate = dtStartDate.SelectedDate;
+                DateTime? endDate = dtEndtDate.SelectedDate;
+                if (startDate != null && endDate!=null)
+                {
+                    ListView.ItemsSource = _orderRepository.GetOrdersByDate((DateTime)startDate, (DateTime)endDate);
+                }
+                else
+                {
+                    MessageBox.Show("Empty Start Date or End Date");
                 }
             }
             catch (Exception ex)
