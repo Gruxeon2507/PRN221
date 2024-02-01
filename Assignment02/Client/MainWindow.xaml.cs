@@ -112,7 +112,7 @@ namespace Client
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("{0}", ex.Message);
+                    MessageBox.Show(ex.ToString());
                 }
             }
             catch (Exception ex)
@@ -127,6 +127,16 @@ namespace Client
             if (item != null)
             {
                 cbStopManufacture.IsChecked = ((DTO)item).StopManufacture == true ? true : false;
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (lsPhone.SelectedItem != null)
+            {
+                var selectedPhone = (DTO)lsPhone.SelectedItem;
+                tempPhoneList.Remove(selectedPhone);
+                lsPhone.Items.Refresh();
             }
         }
     }

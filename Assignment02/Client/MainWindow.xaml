@@ -33,7 +33,9 @@
                   />
         <Button Content="Load Data" x:Name="btnLoadData" HorizontalAlignment="Left" Margin="44,259,0,0" VerticalAlignment="Top" Width="120" Click="btnLoadData_Click"/>
         <Button Content="Add To List" Name="btnAddToList" HorizontalAlignment="Left" Margin="44,299,0,0" VerticalAlignment="Top" Width="120" Click="btnAddToList_Click"/>
-        <Button Content="Send To Server" Name="btnSendToServer" HorizontalAlignment="Left" Margin="44,339,0,0" VerticalAlignment="Top" Width="120" Click="btnSendToServer_Click" />
+        <Button Content="Delete From List" Name="btnDelete" HorizontalAlignment="Left" Margin="44,339,0,0" VerticalAlignment="Top" Width="120" Click="btnDelete_Click" />
+        <Button Content="Send To Server" Name="btnSendToServer" HorizontalAlignment="Left" Margin="44,379,0,0" VerticalAlignment="Top" Width="120" Click="btnSendToServer_Click" />
+
         <ListView Margin="34,55,-53,35" Name="lsPhone" PreviewMouseLeftButtonUp="listView_Click" Grid.Column="1">
             <ListView.View>
                 <GridView>
@@ -42,6 +44,7 @@
                     <GridViewColumn Header="Branch" Width="120" DisplayMemberBinding="{Binding Path=Branch}"/>
                     <GridViewColumn Header="DateofManufacture" Width="120" DisplayMemberBinding="{Binding Path=DateofManufacture, StringFormat='dd/MM/yyyy'}"/>
                     <GridViewColumn Header="StopManufacture" Width="130" DisplayMemberBinding="{Binding Path=StopManufactureString}"/>
+                    
                 </GridView>
             </ListView.View>
         </ListView>
