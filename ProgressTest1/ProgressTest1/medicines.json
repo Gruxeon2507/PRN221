@@ -7,7 +7,7 @@
       "MedicineName": "json medicine 1",
       "Price": 6000,
       "Amount": 1,
-      "ExpiriDate": "2004-01-01T00:00:00",
+      "ExpiriDate": "2024-01-01T00:00:00",
       "Preserve": "NO",
       "UserManual": "DEMO"
     },
@@ -16,7 +16,7 @@
       "SupplierId": 2,
       "GroupId": 3,
       "Amount": 1,
-      "MedicineName": "json medicine 1",
+      "MedicineName": "json medicine 2",
       "Price": 6000,
       "ExpiriDate": "2004-01-01T00:00:00",
       "Preserve": "NO",

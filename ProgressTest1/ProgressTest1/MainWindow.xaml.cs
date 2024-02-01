@@ -80,6 +80,15 @@ namespace ProgressTest1
         }
         private void btnRefesh_Click(object sender, RoutedEventArgs e)
         {
+            txtAmount.Text = string.Empty;
+            txtId.Text = string.Empty;
+            txtName.Text = string.Empty;
+            txtPreserve.Text = string.Empty;
+            txtPrice.Text = string.Empty;
+            txtUserManual.Text = string.Empty;
+            dtExpiredDate.SelectedDate = null;
+            cboGroup.SelectedItem = null;
+            cboSupplier.SelectedItem = null;
             LoadData();
         }
 
@@ -114,14 +123,15 @@ namespace ProgressTest1
                 var medicine = getInfor();
                 if(medicine != null)
                 {
-                    _context.Add(medicine);
+                    _context.ChangeTracker.Clear();
+                    _context.Medicines.Add(medicine);
                     _context.SaveChanges();
                     LoadData();
                     MessageBox.Show("Insert Medicine completed", "Create Medicine");
                 }
             }catch (Exception ex)
             {
-                MessageBox.Show("Insert Medicine Failed: " + ex.Message, "Create Medicine");
+                MessageBox.Show("Insert Medicine Failed: Medicine ID is already existed", "Create Medicine");
             }
         }
 
@@ -277,7 +287,7 @@ namespace ProgressTest1
             DateTime thirtyDaysFromNow = today.AddDays(30);
 
             dgMedicine.ItemsSource = _context.Medicines
-                .Where(m => m.ExpiriDate >= today && m.ExpiriDate <= thirtyDaysFromNow)
+                .Where(m => m.ExpiriDate >= today & m.ExpiriDate<=thirtyDaysFromNow)
                 .ToList();
         }
 
