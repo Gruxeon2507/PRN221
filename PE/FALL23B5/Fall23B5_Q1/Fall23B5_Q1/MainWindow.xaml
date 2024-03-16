@@ -1,0 +1,29 @@
+﻿<Window x:Class="Fall23B5_Q1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fall23B5_Q1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="17,21,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="17,60,0,0" TextWrapping="Wrap" x:Name="tbId" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="17,92,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="17,131,0,0" TextWrapping="Wrap" x:Name="tbName" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="17,169,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="17,0,0,0" TextWrapping="Wrap" x:Name="tbPrice" VerticalAlignment="Center" Width="120"/>
+        <Button Content="Add To List" HorizontalAlignment="Left" Margin="17,245,0,0" Name="btAdd" VerticalAlignment="Top" Width="120" Click="btAdd_Click"/>
+        <ListView x:Name="lvProduct" Margin="173,0,0,59">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Save to file" HorizontalAlignment="Left" Margin="173,388,0,0" x:Name="btSave" VerticalAlignment="Top" Width="627" Click="btSave_Click"/>
+
+    </Grid>
+</Window>

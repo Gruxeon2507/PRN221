@@ -1,6 +1,6 @@
 dotnet tool install --global dotnet-ef
 
-dotnet ef DBcontext scaffold "server =(local); database =Medicine;uid=duckm;pwd=123456;Trusted_Connection=True;Encrypt=False" Microsoft.EntityFrameworkCore.SqlServer -o Models 
+dotnet ef DBcontext scaffold "server =(local); database =PRN221_MealManagement;uid=duckm;pwd=123456;Trusted_Connection=True;Encrypt=False" Microsoft.EntityFrameworkCore.SqlServer -o Models 
 
 -----------------------------------------------------
 

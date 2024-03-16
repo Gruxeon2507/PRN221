@@ -1,0 +1,53 @@
+﻿@page "{handler?}"
+@model Fall23B5_Q2.Pages.Student.ListModel
+@{
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<form method="get">
+    Major: <select name="major">
+        @{
+            foreach(var major in Model.Majors)
+            {
+                if (!string.IsNullOrEmpty(Model.MajorFilter))
+                {
+                    bool isSelected = Model.MajorFilter.Equals(major.MajorCode);
+                    <option selected="@isSelected" value="@major.MajorCode">@major.MajorName</option>
+                }
+                else
+                {
+                    <option value="@major.MajorCode">@major.MajorName</option>
+                }
+                
+            }
+        }
+    </select>
+    Gender
+    <select name="gender">
+        <option value="true">Female</option>
+        <option value="false">Male</option>
+    </select>
+    <br />
+    Sortby:
+    <input type="radio" name="sortby" value="StudentName" /> StudentName
+    <input type="radio" name="sortby" value="StudentId" />StudentId
+    <input type="radio" name="sortby" value="StudentDob" />StudentDob
+    <br />
+    <input type="submit" value="Filter" />
+</form>
+
+<br />
+
+<h1>List of Students</h1>
+@{
+    foreach(var student in Model.Students)
+    {
+        <p>@student.StudentId - @student.FullName - @student.Major - @student.Dob?.ToString("dd/MM/yy")</p>
+        <a asp-page-handler="delete" asp-route-id="@student.StudentId">Delete</a>
+    }
+}
+
+<script src="~/signalr.js"></script>
+<script src="~/signalr.min.js"></script>
+<script src="~/site.js"></script>
