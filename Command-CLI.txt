@@ -6,7 +6,7 @@ dotnet ef DBcontext scaffold "server =(local); database =PRN221_MealManagement;u
 
 {
   "ConnectionStrings": {
-    "DefaultConnection": "server =(local); database = PE_PRN_Sum23B5;uid=duckm;pwd=123456;Trusted_Connection=True;Encrypt=False"
+    "DefaultConnection": "server =(local); database = PRN221_Meal;uid=duckm;pwd=123456;Trusted_Connection=True;Encrypt=False"
   }
 }
 --------------------------------------------------------------------------------------

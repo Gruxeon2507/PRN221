@@ -21,7 +21,7 @@ namespace Assignment03.Pages.Posts
 
         public IList<Post> Post { get;set; } = default!;
         public IList<Post> Posts { get;set; } = default!;
-        public int PageSize { get; private set; } = 3; // Number of items per page
+        public int PageSize { get; private set; } = 6; // Number of items per page
         public int TotalPages { get; private set; }
         public int CurrentPage { get; private set; } = 1;
         public int Page = 1;

@@ -24,7 +24,7 @@ namespace Client
         public MainWindow()
         {
             InitializeComponent();
-            LoadData();
+            //LoadData();
 
         }
         public void LoadData()
